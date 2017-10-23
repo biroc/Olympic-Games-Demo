@@ -14,7 +14,7 @@ The various notebooks provided in this repo show how Featuretools:
 [Featuretools](https://www.featuretools.com/) is a framework to perform automated feature engineering. It excels at transforming transactional and relational datasets into feature matrices for machine learning.
 
 The notebooks here show how Featuretools:
- * Simplifies data science-related code ([this](Baseline Solutions.ipynb))
+ * Simplifies data science-related code ([this](BaselineSolutions.ipynb))
  * Enables us to ask innovative questions ([this](FeaturetoolsPredictiveModelingSimple.ipynb))
  * Avoid classic label-leakage problems ([this](FeaturetoolsPredictiveModelingSimple.ipynb))
  * Exhaustively generate thousands of features ([this](FeaturetoolsPredictiveModelingSimple.ipynb))
@@ -32,12 +32,13 @@ I'll generate a model using Featuretools that predicts the number of medals a co
 pip install -r requirements.txt
 ```
 
-The dataset for notebooks 1, 2, and 3 is found <a href=https://www.kaggle.com/the-guardian/data>here</a>.
+The Olympic Games dataset is found <a href=https://www.kaggle.com/the-guardian/data>here</a>.
 
-Notebooks 4, 5 and 6 will require the following additional datasets:
+<!--Notebooks 4, 5 and 6 will require the following additional datasets:-->
 
- * <a href=https://www.kaggle.com/worldbank/world-development-indicators>Economic Data</a>
- * <a href=https://unstats.un.org/unsd/methodology/m49/overview/>Region Data</a>
+<!-- * <a href=https://www.kaggle.com/worldbank/world-development-indicators>Economic Data</a> -->
+<!-- * <a href=https://unstats.un.org/unsd/methodology/m49/overview/>Region Data</a> -->
+
 
 ## Detailed Description of Notebooks
 
