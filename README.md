@@ -9,15 +9,44 @@
 -->
 ## Highlights
 
-* I'll show how to build a model that predicts which country is going to win the Olympic Games
-* This is how we stack up in 2016 (the dataset included data from 1896-2012):
-  ![Actual vs Predicted 2016](images/actual_vs_predicted_2016.png)
-* This is what the model predicts would have happened in 2016 had the Soviet bloc countries competed:
-* The model is surprisingly good, even with the simple baseline features I constructed. Check out the following scores over time:
-* Notice how much worse we do in some years! We can easily see the impact of various world affairs that happened outside of this dataset, such as the Cold War boycotts in the 1980s.
-* Here are 2 confusion matrices from 1984 and 2004, showing much worse we are predicting which were high-scoring countries in 2004.
-* This is a sampling of high-level features that mattered a lot
-(Table: feature name, feature explanation)
+I'll show how to build a model that predicts which country is going to win the Olympic Games.
+
+This is how we stack up in 2016 (the dataset included data from 1896-2012):
+
+<img src="images/actual_vs_predicted_2016.png" alt="Actual vs Predicted 2016" width="400"/>
+
+This is what the model predicts would have happened in 2016 had the Soviet bloc countries competed:
+
+<img src="images/soviet_bloc_predictions.png" alt="Soviet Bloc Predictions 2016" width="400"/>
+
+We see the Soviet Union (URS) winning it all, and both East (GDR) and West (FRG) Germany beating modern unified Germany (GER).
+
+The model is surprisingly good, even with the simple baseline features I constructed. Check out the following scores over time:
+
+**Regression model**
+<img src="images/r2.png" alt="R2 Scores" width="400"/>
+
+**Binned model**
+<img src="images/f1_micro.png" alt="F1_micro Scores" width="400"/>
+
+**Binary model**
+<img src="images/f1.png" alt="F1 Scores" width="400"/>
+
+Notice how much worse we do in some years! We can easily see the impact of various world affairs that happened outside of this dataset, such as the Cold War boycotts in the 1980s.
+
+Here are 2 confusion matrices from 1984 and 2004, showing much worse we are predicting which were high-scoring countries in 2004.
+
+<img src="images/cm_1984.png" alt="F1 Scores" width="400"/>
+
+<img src="images/cm_2004.png" alt="F1 Scores" width="400"/>
+
+Sampling of high-level features (defined automatically using Featuretools) that mattered a lot:
+
+**`PERCENTILE(COUNT(medals_won WHERE Medal = Gold))`**: Percentile across all countries of the count of gold medals won in all previous Olympics.
+
+**`MEAN(countries_at_olympic_games.PERCENTILE(NUM_UNIQUE(medals_won.MODE(medaling_athletes.Athlete))))`** Convoluted way of saying take the number of unique medaling athletes at each olympics a country competed in, find the percentile of that number in relation to the other countries, and take the average percentile over time. In other words, the average rank of the number of medaling athletes over time. The Mode part is an overcomplication that does not provide any additional information. So, if this value was high, it means that the country had on average a lot of medaling athletes in its historical Olympic showings.
+
+**`TREND(countries_at_olympic_games.SKEW(medals_won.NUM_UNIQUE(medaling_athletes.Athlete)), Year)`** The way we have out data set up, each medal can be associated with many athletes (think: all the members of the medaling Soccer team). Therefore, this feature is looking at the skew (a statistical measure indicating whether more of the values lie toward the left or the right of the mean) of how many athletes there were per medal, and finding the the slope of a trend line fitted these skew numbers over time. One way to think of the skew number is whether the country won more medals in team sports than in individual sports, and the trend shows how that changes over time.
 
 ## Goals
 
