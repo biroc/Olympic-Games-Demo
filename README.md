@@ -7,6 +7,18 @@
 | [Performance Evaluation](#[Coming soon] Performance Evaluation)
 | [Constrained Feature Exploration](#[Coming soon] Constrained Feature Exploration)
 -->
+## Highlights
+
+* I'll show how to build a model that predicts which country is going to win the Olympic Games
+* This is how we stack up in 2016 (the dataset included data from 1896-2012):
+<img src="images/actual_vs_predicted_2016.pdf"/>
+* This is what the model predicts would have happened in 2016 had the Soviet bloc countries competed:
+* The model is surprisingly good, even with the simple baseline features I constructed. Check out the following scores over time:
+* Notice how much worse we do in some years! We can easily see the impact of various world affairs that happened outside of this dataset, such as the Cold War boycotts in the 1980s.
+* Here are 2 confusion matrices from 1984 and 2004, showing much worse we are predicting which were high-scoring countries in 2004.
+* This is a sampling of high-level features that mattered a lot
+(Table: feature name, feature explanation)
+
 ## Goals
 
 The various notebooks provided in this repo show how Featuretools:
@@ -39,6 +51,7 @@ Notebooks 4, 5 and 6 will require the following additional datasets:
  * <a href=https://www.kaggle.com/worldbank/world-development-indicators>Economic Data</a>
  * <a href=https://unstats.un.org/unsd/methodology/m49/overview/>Region Data</a>
 
+
 ## Detailed Description of Notebooks
 
 #### Featuretools Basics: FeaturetoolsPredictiveModelingSimple.ipynb
@@ -52,7 +65,7 @@ Machine learning performance scores should never be taken at face value.
 To have any merit, they must be compared against a simple baseline model to see how much improvement they produced.
 In this notebook, I'll examine several baseline solutions, and see how much simpler the code to produce these baselines is when using Featuretools as compared to lower-level libraries.
 
-#### [Coming soon] Generating Labels (Prediction Engineering)
+#### [To Be Released] Generating Labels (Prediction Engineering)
 
 I'll show a way to generate the labels for supervised machine learning we use throughout this demo.
 Note that this is a non-trivial problem in general, as we need to scan through the time-varying components of a dataset and choose windows of time in which we compute a function that then determines a label.
