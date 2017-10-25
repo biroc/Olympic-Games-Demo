@@ -11,7 +11,7 @@
 
 * I'll show how to build a model that predicts which country is going to win the Olympic Games
 * This is how we stack up in 2016 (the dataset included data from 1896-2012):
-<img src="images/actual_vs_predicted_2016.pdf"/>
+![Actual vs Predicted 2016](images/actual_vs_predicted_2016.pdf)
 * This is what the model predicts would have happened in 2016 had the Soviet bloc countries competed:
 * The model is surprisingly good, even with the simple baseline features I constructed. Check out the following scores over time:
 * Notice how much worse we do in some years! We can easily see the impact of various world affairs that happened outside of this dataset, such as the Cold War boycotts in the 1980s.
